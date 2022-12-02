@@ -1,15 +1,13 @@
 # 模组树文档中文翻译
-## 介绍 README
+## 介绍
 模组树(TMT)是一个放置-增量游戏引擎，它最初是声望树(Prestige Tree)的高扩展性版本。
 
-## 模组树仓库
-推荐使用此仓库，因其在原模组树的基础上扩大了数值上限：[The-Modding-Tree-Omeganum]https://github.com/unsoftcapped3/The-Modding-Tree-Omeganum  
+模组树推荐下载此仓库，因其在原模组树的基础上扩大了数值上限：[The-Modding-Tree-Omeganum]https://github.com/unsoftcapped3/The-Modding-Tree-Omeganum  
 
 ## 目录
 ### 教程
-有两个教程，前者是原仓库 tutorials 文件夹的合集，但删去了有关 github 使用的部分。后者是在原仓库文档部分，建议没读过教程的人看的文章。
-* [开始使用](/docs/getting-started.md)
-* [mod主要信息](/docs/main-mod-info.md)
+* [开始使用](/docs/getting-started.md)：教程文件夹内的教程合集
+* [mod主要信息](/docs/main-mod-info.md)：作者为未读教程的人撰写的快速上手文章
 
 如果你真的打算编写程序，可以下载以下两个软件之一，以在之后获得更好的编辑体验：
 * [HBuilderX](https://dcloud.io/hbuilderx.html)

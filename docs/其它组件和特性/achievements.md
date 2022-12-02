@@ -1,29 +1,27 @@
-# Achievements
+# 成就 Achievements
 
-Achievements are awarded to the player when they meet a certain goal, and optionally give some benefit. Currently they are pretty basic, but additional features will be added later to help.
+成就类似任务，当玩家满足某些条件时达成，并给予玩家奖励。TMT 的成就系统目前功能较少。
 
 You can make global achievements by putting them in a side layer by making its row equal to "side" instead of a number.
 
 Useful functions for dealing with achievements and implementing their effects:
 
-- hasAchievement(layer, id): determine if the player has the Achievement.
-- achievementEffect(layer, id): Returns the current effects of the achievement, if any.
+有用的函数：
+- hasAchievement(layer, id)：判断玩家是否达成某个成就
+- achievementEffect(layer, id)：如果有，则返回当前成就效果
 
-Achievements should be formatted like this:
-
-```js
+成就的格式如下：
+```javascript
 achievements: {
     rows: # of rows,
     cols: # of columns,
-    11: {
+    11: { // id，第一个为行第二个为列
         name: "Achievement",
-        etc
+        //...
     },
-    etc
+    //...
 }
 ```
-
-Each achievement should have an id where the first digit is the row and the second digit is the column.
 
 Individual achievement can have these features:
 

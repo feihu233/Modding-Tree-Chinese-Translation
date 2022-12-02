@@ -1,35 +1,29 @@
 # 基本信息
+模组树中几乎所有的值都既可以是常量，也可以是变量，但变量通常通过函数返回值来表现。你可以将其理解为软性的“不可变”数据。
 
-基于模组树(TMT)制作放置-增量游戏的主要工作是更改对象。
+模组中所有涉及显示文本的字符串值都可以写入 HTML 元素，但不可使用 Vue 特性。
 
-Beyond that, the main way to add content is through creating layers, often in [layers.js](/js/layers.js). You can add new layers by calling `addLayer(layername, layerdata)`. There is an example of a basic layer in [layers.js](/js/layers.js) showing the recommended method. It is just an example and can be freely deleted. You can also use it as a reference or a base for your own layers. 
+**关键字**：
+* 无标签(No label)：如果不包含它们，游戏将崩溃
+* 可能需要(sometimes required)：如果你使用了某些机制，那么不包含它们游戏将崩溃
+* 可选的(optional)
+* 自动分配(assigned automagically)：这个值会自动设置，并覆盖你设置的内容
+* 弃用的(deprecated)：已有更好的替代方案
 
-You can test your mod by opening the [index.html][/index.html] file in your browser.
+## 超大数
+模组树使用 [break\_eternity.js](https://github.com/Patashu/break_eternity.js) 来使用并存储数字，因此这里使用的数字实际上都是 `OmegaNum` 对象，它可以使用类似 `new OmegaNum(1)` 的形式来创建，参数也可以是字符串。
 
-Most of the time, you won't need to dive deep into the code to create things, but you still can if you really want to, for example to add new Vue components in [components.js](/js/components.js).
-
-The Modding Tree uses [break\_eternity.js](https://github.com/Patashu/break_eternity.js) to store large values. This means that many numbers are `OmegaNum` objects, and must be treated differently. For example, you have to use `new OmegaNum(x)` to create a `OmegaNum` value instead of a plain number (x can be a number or a string for larger values). You perform operations on them by calling functions. e.g, instead of `x = x + y`, use `x = x.add(y)`. Keep in mind this also applies to comparison operators, which should be replaced with calling the `.gt`, `.gte`, `.lt`, `.lte`, `.eq`, and `.neq` functions. See the [break\_eternity.js](https://github.com/Patashu/break_eternity.js) docs for more details on working with `OmegaNum` values.
-
-Almost all values can be either a constant value, or a dynamic value. Dynamic values are defined by putting a function that returns what the value should be at any given time.
-
-All display text can use basic HTML elements (But you can't use most Vue features there).
-
-While reading this documentation, the following key will be used when describing features:
-
-- No label: This is required and the game may crash if it isn't included.
-- **sometimes required**: This is may be required, depending on other things in the layer.
-- **optional**: You can leave this out if you don't intend to use that feature for the layer.
-- **assigned automagically**: This value will be set automatically and override any value you set.
-- **deprecated**: This feature is not recommended to be used, because newer features are able to achieve the same thing in a better, easier way.
-
-## Table of Contents
+`OmegaNum` 无法使用 javascript 原生的运算符进行运算，而是通过函数进行运算，相关内容请查阅[break\_eternity.js 文档翻译](/docs/omegaNum.md)。
 
 
+## js 目录（暂存）
+* [layers.js](/js/layers.js) 是主要增加游戏内容的文件
+* [components.js](/js/components.js) 可以增加新的 Vue 组件，深度定制游戏
+* 
 
-### General
+## 内容列表 Table of Contents
+### 常规 General
 
-- [Getting Started](tutorials/getting-started.md): A guide to getting your own copy of the code set up with Github Desktop.
-- [Making a Mod](tutorials/making-a-mod.md): A guide to using TMT to make a basic mod.
 - [Main mod info](main-mod-info.md): How to set up general things for your mod in [mod.js](/js/mod.js).
 - [Basic layer breakdown](basic-layer-breakdown.md): Breaking down the components of a layer with minimal features.
 - [Layer features](layer-features.md): Explanations of all of the different properties that you can give a layer.
@@ -38,18 +32,18 @@ While reading this documentation, the following key will be used when describing
     or even customize the tab's layout like a layer tab.
 - [Updating TMT](tutorials/updating-tmt.md): Using Github Desktop to update your mod's version of TMT.
 
-### Common components
+### 一般组件 Common components
 
-- [Upgrades](upgrades.md): How to create upgrades for a layer.
-- [Milestones](milestones.md): How to create milestones for a layer.
-- [Buyables](buyables.md): Create rebuyable upgrades for your layer (with the option to make them respec-able). Can be used to make Enhancers or Space Buildings, for example.
-- [Clickables](clickables.md): A more generalized variant of buyables, for any kind of thing that is sometimes clickable. Between these and Buyables, you can do just about anything.
-- [Achievements](achievements.md): How to create achievements for a layer (or for the whole game).
+- [升级](upgrades.md)
+- [里程碑](milestones.md)
+- [可购买物品](buyables.md)
+    + [可点击物品](clickables.md)
+- [成就/进度](achievements.md)
 
-### Other components and features
+### 其它组件和特性 Other components and features
 
-- [Challenges](challenges.md): How to create challenges for a layer.
-- [Bars](bars.md): Display some information as a progress bar, gauge, or similar. They are highly customizable, and can be horizontal and vertical as well.
+- [挑战](/docs/其他组件和特性/challenges.md)：为层创建挑战
+- [Bars](bars.md)：使用进度条、显示信息Display some information as a progress bar, gauge, or similar. They are highly customizable, and can be horizontal and vertical as well.
 - [Subtabs and Microtabs](subtabs-and-microtabs.md): Create subtabs for your tabs, as well as "microtab" components that you can put inside the tabs.
                         You can even use them to embed a layer inside another layer!
 - [Grids](grids.md): Create a group buttons that behave the same, but have their own data. Good for map tiles, an inventory grid, and more!
